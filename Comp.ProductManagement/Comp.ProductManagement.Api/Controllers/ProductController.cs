@@ -58,8 +58,8 @@ namespace Comp.ProductManagement.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDto>> Get(int id)
         {
-            var leaveType = await _mediator.Send(new GetProductDetailsRequest { Id = id });
-            return Ok(leaveType);
+            var product = await _mediator.Send(new GetProductDetailsRequest { Id = id });
+            return Ok(product);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Comp.ProductManagement.Api.Controllers
         ///     POST: api/products
         ///     
         /// </remarks>
-        /// <response code="200">Product was succesfully created </response>
+        /// <response code="200">Product is succesfully created </response>
         /// <response code="400">Unexpected error</response>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CreateProductDto product)
